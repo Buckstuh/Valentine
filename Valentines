@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+       body {
+           min-height: 100vh;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           background: #0a0506;
+           font-family: 'Lora', serif;
+           overflow-x: hidden;
+           position: relative;
+       }
+       /* Warm ambient glow */
+       body::before {
+           content: '';
+           position: fixed;
+           top: -30%;
+           left: -10%;
+           width: 60%;
+           height: 80%;
+           background: radial-gradient(ellipse, rgba(180, 50, 50, 0.08) 0%, transparent 70%);
+           pointer-events: none;
+           z-index: 0;
+       }
+       body::after {
+           content: '';
+           position: fixed;
+           bottom: -20%;
+           right: -10%;
+           width: 50%;
+           height: 70%;
+           background: radial-gradient(ellipse, rgba(200, 100, 80, 0.06) 0%, transparent 70%);
+           pointer-events: none;
+           z-index: 0;
+       }
+       .container {
+           max-width: 680px;
+           width: 90%;
+           padding: 60px 20px 80px;
+           text-align: center;
+           position: relative;
+           z-index: 1;
+       }
+       /* Floating hearts */
+       .hearts {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           pointer-events: none;
+           z-index: 0;
+           overflow: hidden;
+       }
+       .heart {
+           position: absolute;
+           font-size: 14px;
+           opacity: 0;
+           animation: floatUp linear infinite;
+           color: #c4565a;
+       }
+       @keyframes floatUp {
+           0% {
+               opacity: 0;
+               transform: translateY(100vh) rotate(0deg) scale(0.5);
+           }
+           10% {
+               opacity: 0.15;
+           }
+           90% {
+               opacity: 0.15;
+           }
+           100% {
+               opacity: 0;
+               transform: translateY(-10vh) rotate(45deg) scale(1);
+           }
+       }
+       .date-label {
+           font-family: 'Lora', serif;
+           font-size: 0.75rem;
+           letter-spacing: 4px;
+           text-transform: uppercase;
+           color: rgba(200, 160, 140, 0.5);
+           margin-bottom: 30px;
+           opacity: 0;
+           animation: fadeIn 1.5s ease 0.3s forwards;
+       }
+       .title {
+           font-family: 'Playfair Display', serif;
+           font-size: clamp(2rem, 6vw, 3.2rem);
+           font-weight: 400;
+           font-style: italic;
+           color: #e8c4b8;
+           line-height: 1.3;
+           margin-bottom: 12px;
+           opacity: 0;
+           animation: fadeIn 1.5s ease 0.6s forwards;
+       }
+       .subtitle {
+           font-family: 'Playfair Display', serif;
+           font-size: clamp(1rem, 3vw, 1.3rem);
+           font-weight: 400;
+           color: rgba(200, 160, 140, 0.6);
+           margin-bottom: 50px;
+           opacity: 0;
+           animation: fadeIn 1.5s ease 0.9s forwards;
+       }
+       .divider {
+           width: 40px;
+           height: 1px;
+           background: rgba(200, 140, 120, 0.3);
+           margin: 0 auto 50px;
+           opacity: 0;
+           animation: fadeIn 1.5s ease 1s forwards;
+       }
+       .video-wrapper {
+           position: relative;
+           width: 100%;
+           margin: 0 auto 50px;
+           border-radius: 8px;
+           overflow: hidden;
+           box-shadow:
+               0 20px 60px rgba(0, 0, 0, 0.5),
+               0 0 80px rgba(180, 80, 60, 0.08);
+           opacity: 0;
+           animation: fadeIn 1.5s ease 1.2s forwards;
+       }
+       .video-wrapper video {
+           width: 100%;
+           display: block;
+           border-radius: 8px;
+       }
+       .message {
+           font-family: 'Lora', serif;
+           font-size: clamp(1rem, 2.8vw, 1.15rem);
+           font-weight: 300;
+           font-style: italic;
+           color: rgba(220, 190, 175, 0.85);
+           line-height: 1.9;
+           max-width: 520px;
+           margin: 0 auto 20px;
+           opacity: 0;
+           animation: fadeIn 2s ease 1.8s forwards;
+       }
+       .message span {
+           display: block;
+           margin-top: 24px;
+       }
+       .closing {
+           font-family: 'Playfair Display', serif;
+           font-size: 1.1rem;
+           font-style: italic;
+           color: #c4868a;
+           margin-top: 40px;
+           opacity: 0;
+           animation: fadeIn 2s ease 2.4s forwards;
+       }
+       .heart-icon {
+           display: inline-block;
+           color: #c4565a;
+           font-size: 0.9em;
+           animation: pulse 2s ease-in-out infinite;
+           margin: 0 2px;
+       }
+       @keyframes fadeIn {
+           from { opacity: 0; transform: translateY(15px); }
+           to { opacity: 1; transform: translateY(0); }
+       }
+       @keyframes pulse {
+           0%, 100% { transform: scale(1); }
+           50% { transform: scale(1.15); }
+       }
+       /* Subtle grain overlay */
+       .grain {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           pointer-events: none;
+           z-index: 999;
+           opacity: 0.03;
+           background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+       }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="hearts" id="hearts"></div>
+<div class="container">
+<div class="date-label">February 14, 2026</div>
+<h1 class="title">Happy Valentine's Day, Ivanna</h1>
+<p class="subtitle">a year of flights, just for us</p>
+<div class="divider"></div>
+<div class="video-wrapper" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+<iframe
+               src="https://drive.google.com/file/d/1FvfZtSYTYkeD75qs2B3oel0b8S6afLem/preview"
+               style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:8px;"
+               allow="autoplay"
+               allowfullscreen>
+</iframe>
+</div>
+<p class="message">
+           Every flight, every Sunday goodbye, every Monday apart —
+           I'd do all of it again without hesitation.
+<span>
+               But I'm so glad we won't have to anymore. <span class="heart-icon">♥</span>
+</span>
+</p>
+<p class="closing">
+           All my love, always
+</p>
+</div>
+<script>
+       // Generate floating hearts
+       const container = document.getElementById('hearts');
+       const heartChars = ['♥', '♡', '❤'];
+       for (let i = 0; i < 20; i++) {
+           const heart = document.createElement('div');
+           heart.classList.add('heart');
+           heart.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+           heart.style.left = Math.random() * 100 + '%';
+           heart.style.fontSize = (Math.random() * 12 + 8) + 'px';
+           heart.style.animationDuration = (Math.random() * 15 + 15) + 's';
+           heart.style.animationDelay = (Math.random() * 20) + 's';
+           container.appendChild(heart);
+       }
+</script>
+</body>
+</html>
